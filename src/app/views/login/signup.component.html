@@ -1,0 +1,45 @@
+<div class="login-background">
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" >
+        
+      <mat-card class="login-container">
+          
+          <div fxLayout="column">
+              <i class="material-icons" style="font-size: 80px;text-align: center;color:grey">account_circle</i>
+              <div fxFlex class="login-element">
+                  
+                  <mat-form-field class="matFormField" width="100%">
+                    <input matInput [(ngModel)]="fname" placeholder="First Name" required>
+                  </mat-form-field>
+              </div>
+              <div fxFlex class="login-element">
+                  <mat-form-field class="matFormField">
+                    <input matInput [(ngModel)]="lname" placeholder="Last Name">
+                  </mat-form-field>
+              </div>
+              <div fxFlex class="login-element">
+                    <mat-form-field class="matFormField" width="100%">
+                        <input matInput [(ngModel)]="email" placeholder="Email" required>
+                    </mat-form-field>
+              </div>
+              <div fxFlex class="login-element">
+                    <mat-form-field class="matFormField" width="100%">
+                        <input type="password" matInput [(ngModel)]="password" placeholder="Password" required>
+                    </mat-form-field>
+              </div>
+              <div fxFlex class="login-element">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              <div fxFlex class="login-button-container">
+                  <button class="login-button" mat-raised-button color="primary" id="googleBtn" (click)="signup()">SUBMIT</button>
+              </div>
+          </div>
+      </mat-card>
+    </div>
+</div>
+</div>

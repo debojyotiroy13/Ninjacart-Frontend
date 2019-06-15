@@ -1,0 +1,117 @@
+<div style="background:#eee;height: -webkit-fill-available;">
+<div class="container">
+<div class="col-md-12 card">
+<mat-card>
+    <div fxLayout="row">
+        <div fxFlex>
+          <h4>Add Items</h4>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex>
+            <mat-form-field class="matFormField">
+              <mat-select (selectionChange)="selectProduct($event.value)" placeholder="Product Category" name="Category" [(ngModel)]="selectedCategory">
+                <mat-option *ngFor="let cat of categoryDataSource" [value]="cat">{{cat.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="matFormField">
+                <mat-select placeholder="Product Name" name="Category" [(ngModel)]="selectedProduct">
+                  <mat-option *ngFor="let prod of productDataSource" [value]="prod">{{prod.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field class="matFormField">
+                <input type="number" matInput [(ngModel)]="selectedQuantity" placeholder="Product Quantity">
+              </mat-form-field>
+            <mat-form-field class="matFormField">
+                <input type="number" matInput [(ngModel)]="selectedPrice" placeholder="Product Price">
+            </mat-form-field>
+            <span>
+              <button mat-stroked-button color="primary" (click)="createItem()">ADD</button>
+              <button mat-raised-button color="accent" (click)="getItem()">GET</button>
+            </span>
+        </div>
+    </div>
+</mat-card>
+</div>
+<!-- <div class="col-md-6 card">
+  <mat-card>
+    
+    <br>
+    <button mat-raised-button (click)="showAnswer()">Answer me</button>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card>
+  </div>
+  <div class="col-md-6 card">
+    <mat-card>
+      <br>
+      <button mat-raised-button (click)="showAnswer()">Answer me</button>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card>
+  </div> -->
+  <div class="col-md-12 card">
+  <mat-card>
+    
+    <!-- <div fxLayout="row">
+        <div fxFlex>
+          <h4>Saved Items</h4>
+          <span><mat-spinner [diameter]="20" [strokeWidth]="2" [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner></span>
+        </div>
+    </div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search All">
+    </mat-form-field> -->
+
+  <table mat-table [dataSource]="itemDataSource" class="mat-elevation-z8" class="table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> Product </th>
+        <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <i class="material-icons" style="cursor: pointer" (click)="deleteProduct(element.id)">delete</i>
+          <!-- <button mat-raised-button color="primary" (click)="editProduct(element.id)">EDIT</button> 
+          <button mat-raised-button color="warn" (click)="deleteProduct(element.id)">DELETE</button>  -->
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div fxLayout="row">
+        <div fxFlex>
+            <mat-paginator [length]="tableLength"
+              [pageSize]="tablePageSize"
+              [pageSizeOptions]="tablePageSizeOptions"
+              (page)="pageEvent = $event">
+            </mat-paginator>
+        </div>
+      </div>
+  </mat-card>
+
+  
+  </div>
+</div>
+</div>

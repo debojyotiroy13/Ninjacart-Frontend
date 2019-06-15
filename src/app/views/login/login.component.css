@@ -1,0 +1,19 @@
+.login-element > * {
+    width: 100%;
+}
+.login-container {
+    margin-top: 80px;
+    padding: 40px;
+}
+.login-button-container {
+    margin-top: 20px;
+}
+.login-button {
+    width : 100%;
+    margin-right: 20px;
+}
+
+.login-background{
+    background: lavender;
+    height: 300px;
+}

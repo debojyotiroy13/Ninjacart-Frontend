@@ -1,0 +1,34 @@
+<div class="login-background">
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" >
+        
+      <mat-card class="login-container">
+          
+          <div fxLayout="column">
+              <i class="material-icons" style="font-size: 80px;text-align: center;color:grey">account_circle</i>
+              <div fxFlex class="login-element">
+                  
+                  <mat-form-field class="matFormField" width="100%">
+                    <input matInput [(ngModel)]="email" placeholder="Email">
+                  </mat-form-field>
+              </div>
+              <div fxFlex class="login-element">
+                  <mat-form-field class="matFormField">
+                      <input type="password" matInput [(ngModel)]="password" placeholder="Password">
+                  </mat-form-field>
+              </div>
+              <div fxFlex class="login-button-container">
+                    <div fxLayout="row">
+                  <div fxFlex><button class="login-button" mat-raised-button color="primary" id="googleBtn" (click)="login()">Login</button></div>
+                  <div fxFlex><div class="g-signin2" data-onsuccess="onSignIn"></div></div>
+                  </div>
+              </div>             
+              <div fxFlex class="login-button-container">
+                  <button class="login-button" mat-raised-button color="accent" (click)="signup()">SIGNUP</button>
+              </div>
+          </div>
+      </mat-card>
+    </div>
+</div>
+</div>

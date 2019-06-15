@@ -1,0 +1,124 @@
+
+<div class="col-md-12">
+    <div fxFlex class="search-card-box">
+      <mat-card>
+          <div fxLayout="column">
+              <div fxFlex>
+                  <span><i class="material-icons" style="color: gray;margin-right: 10px;">search</i></span>
+                  <span> <input style="width:80%" class="search-product" matInput placeholder="Search Products"></span>
+              </div>
+          </div>
+
+          
+      </mat-card>
+    </div>
+  </div>
+    <div class="filter-panel col-md-3">
+        <mat-accordion class="">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Filters
+                </mat-panel-title>
+                <mat-panel-description>
+                  Basic
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div fxLayout="column">
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Brand Name">
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Color">
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Material">
+                      </mat-form-field>
+                  </div>
+              </div>
+              
+              
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Filters
+                </mat-panel-title>
+                <mat-panel-description>
+                  Advance
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div fxLayout="column">
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Price Range">
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Ratings">
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex>
+                      <mat-form-field>
+                        <input matInput placeholder="Price Range">
+                      </mat-form-field>
+                  </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+    <div class="col-md-9 breadcrumb">
+        <div class="row">
+            <div class="col-md-12">
+            <div fxFlex class="product-card-header">
+              <mat-card>
+                  <!-- <mat-card-title>Categories</mat-card-title> -->
+                  <mat-card-subtitle>
+                    
+                      <mat-chip-list>
+                          <mat-chip color="accent" *ngFor="let cat of categoriesDataSource" selected>{{cat.name}}</mat-chip>
+                          <!-- <mat-chip color="accent" selected>Accent fish</mat-chip> -->
+                        </mat-chip-list>
+                  </mat-card-subtitle>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4" *ngFor="let item of productDataSource">
+                    <mat-card class="product-card-header">
+                        <mat-card-header>
+                          <mat-card-title>{{item.name}}</mat-card-title>
+                          <mat-card-subtitle>20% Discount</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image src="https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1V2VvP0Bc_hsTGx3rtlMZDDBYYtBwuTQ-%2Fgridlist-illos-01.png" alt="Photo">
+                        <mat-card-content>
+                          <p>{{item.description}}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                          <button mat-button>Wishlist</button>
+                          <button mat-button>Cart</button>
+                          <button mat-button (click)="quickview(item)">Quick View</button>
+                        </mat-card-actions>
+                      </mat-card>
+            </div>
+        </div>
+      </div>
+ 
+        <!-- <div fxFlex>   
+          <div fxLayout="row">
+              <div fxFlex>
+                  <mat-paginator [length]="tableLength"
+                    [pageSize]="tablePageSize"
+                    [pageSizeOptions]="tablePageSizeOptions"
+                    (page)="pageEvent = $event">
+                  </mat-paginator>
+              </div>
+            </div>
+        </div> -->

@@ -4,31 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './views/seller/product.component';
-import { ListComponent } from './views/buyer/buyer.component';
-import { AdminComponent } from './views/admin/admin.component';
-import { LoginComponent } from './views/login/login.component';
-import { SignupComponent } from './views/login/signup.component'
-import { ProductDetailsComponent } from './views/buyer/product.details.component'
 
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { HttpClientModule} from '@angular/common/http';
-import { RestService} from './app.service';
-import { AuthService} from './services/auth.service';
-import { SellerService} from './services/seller.service';
+import { ProductService} from './app.service';
 import { Routes, RouterModule } from '@angular/router';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductComponent,
-    ListComponent,
-    AdminComponent,
-    LoginComponent,
-    SignupComponent,
-    ProductDetailsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +24,7 @@ import { Routes, RouterModule } from '@angular/router';
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [RestService, AuthService, SellerService],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

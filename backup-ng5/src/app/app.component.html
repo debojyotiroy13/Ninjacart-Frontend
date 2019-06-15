@@ -1,0 +1,169 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Catalog</span>
+
+    <span class="example-spacer"></span>
+    
+    <button mat-button>About</button>
+    <button mat-button>Services</button>
+    <button mat-button>Contact</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="col-md-12 card">
+  <mat-card>
+      <div fxLayout="row">
+          <div fxFlex>
+            <h4>Create Categories</h4>
+          </div>
+      </div>
+      <div fxLayout="row">
+          <div fxFlex>
+              <mat-form-field class="matFormField">
+                <input matInput [(ngModel)]="categoryName" placeholder="Category Name">
+              </mat-form-field>
+              <mat-form-field class="matFormField">
+                  <input matInput [(ngModel)]="categoryDescription" placeholder="Category Description">
+              </mat-form-field>
+          </div>
+      </div>
+      <div layout="column" layout-align="end">
+          <div>
+              <button mat-stroked-button color="primary" (click)="createCategory()">ADD</button>
+              <button mat-raised-button color="accent" (click)="getCategory()">GET</button>
+          </div>
+        </div>
+  </mat-card>
+</div>
+<div class="col-md-12 card">
+<mat-card>
+    <div fxLayout="row">
+        <div fxFlex>
+          <h4>Create Products</h4>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex>
+            <mat-form-field class="matFormField">
+              <mat-select placeholder="Select Category" name="Category" [(ngModel)]="exam_title">
+                <mat-option *ngFor="let cat of categoryDataSource" [value]="cat.name">{{cat.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="matFormField">
+                <input matInput [(ngModel)]="productName" placeholder="Product Name">
+              </mat-form-field>
+            <mat-form-field class="matFormField">
+                <input matInput [(ngModel)]="productDescription" placeholder="Product Description">
+              </mat-form-field>
+            <mat-form-field class="matFormField">
+                <input matInput [(ngModel)]="productPrice" placeholder="Product Price">
+              </mat-form-field>
+        </div>
+    </div>
+    <div layout="column" layout-align="end">
+      <div>
+          <button mat-stroked-button color="primary" (click)="createProduct()">ADD</button>
+          <!-- <button mat-raised-button color="accent" (click)="getProduct()">GET</button> -->
+      </div>
+    </div>
+</mat-card>
+</div>
+<!-- <div class="col-md-6 card">
+  <mat-card>
+    
+    <br>
+    <button mat-raised-button (click)="showAnswer()">Answer me</button>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card>
+  </div>
+  <div class="col-md-6 card">
+    <mat-card>
+      <br>
+      <button mat-raised-button (click)="showAnswer()">Answer me</button>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card>
+  </div> -->
+  <div class="col-md-12 card">
+  <mat-card>
+    <div fxLayout="row">
+        <div fxFlex>
+          <h4>Table of Products</h4>
+          <span><mat-spinner [diameter]="20" [strokeWidth]="2" [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner></span>
+        </div>
+    </div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search All">
+    </mat-form-field>
+
+  <table mat-table [dataSource]="productDataSource" class="mat-elevation-z8" class="table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="editProduct(element.id)">EDIT</button> 
+          <button mat-raised-button color="warn" (click)="deleteProduct(element.id)">DELETE</button> 
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+
+  <div fxLayout="row">
+      <div fxFlex >
+          <!-- <mat-form-field>
+            <input matInput [(ngModel)]="tableLength" placeholder="List length">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="tablePageSize" placeholder="Page size">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [ngModel]="tablePageSizeOptions" (ngModelChange)="setPageSizeOptions($event)" placeholder="Page size options">
+          </mat-form-field> -->
+      </div>
+      <div fxFlex>
+          <mat-paginator [length]="tableLength"
+            [pageSize]="tablePageSize"
+            [pageSizeOptions]="tablePageSizeOptions"
+            (page)="pageEvent = $event">
+          </mat-paginator>
+      </div>
+  </div>
+    
+    
+
+  </div>
+  <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>
+          <mat-icon svgIcon="happy"></mat-icon>
+          <mat-icon aria-label="heart">favorite</mat-icon>
+        </span>
+      </mat-toolbar-row>
+    </mat-toolbar>

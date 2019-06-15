@@ -1,21 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><i class="material-icons" style="font-size: 35px;" routerLink="/home">shop</i></span>
+    <span class="example-spacer">NinjaKart</span>
+    
+    <button mat-button routerLink="/home"><i class="material-icons">home</i><span style="padding-left:5px;padding-top: 5px;">Home</span></button>
+    <button mat-button routerLink="/home" ><i class="material-icons">shopping_basket</i><span style="padding-left:5px;padding-top: 5px;">Cart</span></button>
+    <!-- matBadge="8" matBadgePosition="after" matBadgeColor="accent" -->
+    <button mat-button [matMenuTriggerFor]="menu"><i class="material-icons">menu</i></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/login">Login</button>
+      <button mat-menu-item routerLink="/home">Your Account</button>
+      <button mat-menu-item routerLink="/home">Your Orders</button>
+      <button mat-menu-item routerLink="/admin">Admin Dashboard</button>
+      <button mat-menu-item routerLink="/sell">Seller Dashboard</button>
+      <button mat-menu-item (click)="logout()" routerLink="/login">Logout</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+      Copyright © Debojroy 2019
+  </mat-toolbar-row>
+</mat-toolbar> -->
