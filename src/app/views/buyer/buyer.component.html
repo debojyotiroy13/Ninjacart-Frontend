@@ -1,15 +1,15 @@
-
+<div class="loading-indicator" *ngIf="showSpinner">
+  <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+</div>
 <div class="col-md-12">
     <div fxFlex class="search-card-box">
       <mat-card>
           <div fxLayout="column">
               <div fxFlex>
                   <span><i class="material-icons" style="color: gray;margin-right: 10px;">search</i></span>
-                  <span> <input style="width:80%" class="search-product" matInput placeholder="Search Products"></span>
+                  <span> <input style="width:80%" class="search-product" matInput placeholder="Search Products and Categories" autocomplete="off"></span>
               </div>
           </div>
-
-          
       </mat-card>
     </div>
   </div>
@@ -78,12 +78,11 @@
             <div class="col-md-12">
             <div fxFlex class="product-card-header">
               <mat-card>
-                  <!-- <mat-card-title>Categories</mat-card-title> -->
+                  <mat-card-title>Categories</mat-card-title>
                   <mat-card-subtitle>
                     
                       <mat-chip-list>
                           <mat-chip color="accent" *ngFor="let cat of categoriesDataSource" selected>{{cat.name}}</mat-chip>
-                          <!-- <mat-chip color="accent" selected>Accent fish</mat-chip> -->
                         </mat-chip-list>
                   </mat-card-subtitle>
               </mat-card>
@@ -97,7 +96,9 @@
                           <mat-card-title>{{item.name}}</mat-card-title>
                           <mat-card-subtitle>20% Discount</mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image src="https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1V2VvP0Bc_hsTGx3rtlMZDDBYYtBwuTQ-%2Fgridlist-illos-01.png" alt="Photo">
+                        <div>
+                          <img [src]="item.image" alt="Photo" style="width:100%;">
+                        </div>
                         <mat-card-content>
                           <p>{{item.description}}</p>
                         </mat-card-content>
@@ -114,15 +115,17 @@
           <div class="col-md-4" *ngFor="let item of productDataSource">
               <mat-card class="product-card-header">
                   <div class="box" (click)="quickview(item)">
-                      <img class="box-image" style="width:100%" src="https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1V2VvP0Bc_hsTGx3rtlMZDDBYYtBwuTQ-%2Fgridlist-illos-01.png" alt="Photo">
-                      <div class="text">
-                          <p>{{item.name}}</p>
-                      </div>
+                      <img class="box-image" style="width:100%" [src]="item.image" alt="Photo">
+                         <div class="text">
+                          <p class="large-text">{{item.name}}</p>
+                          <p>{{item.description}}</p>
+                        </div>
                   </div>
-                  <mat-card-actions class="mat-card-act">
-                    <button mat-button mat-flat-button color="primary" style="width:45%">Buy</button>
-                    <button mat-button mat-flat-button color="primary" style="width:45%">Add to Cart</button>
-                  </mat-card-actions>
+                  <div>
+                    <button mat-button>Wishlist</button>
+                    <button mat-button>Cart</button>
+                    <button mat-button (click)="quickview(item)">Quick View</button>
+                  </div>
                 </mat-card>
       </div>
   </div>

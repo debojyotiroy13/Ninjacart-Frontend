@@ -18,6 +18,7 @@ import { RestService} from './app.service';
 import { AuthService} from './services/auth.service';
 import { SellerService} from './services/seller.service';
 import { Routes, RouterModule } from '@angular/router';
+import { CartComponent } from './views/buyer/cart.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { Routes, RouterModule } from '@angular/router';
     AdminComponent,
     LoginComponent,
     SignupComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
