@@ -2,94 +2,103 @@
   <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
 </div>
 <div class="col-md-12">
-    <div fxFlex class="search-card-box">
-      <mat-card>
-          <div fxLayout="column">
-              <div fxFlex>
-                  <span><i class="material-icons" style="color: gray;margin-right: 10px;">search</i></span>
-                  <span> <input style="width:80%" class="search-product" matInput placeholder="Search Products and Categories" autocomplete="off"></span>
-              </div>
-          </div>
-      </mat-card>
+  <div fxFlex class="search-card-box">
+    <mat-card>
+      <div fxLayout="column">
+        <div fxFlex>
+          <span><i class="material-icons" style="color: gray;margin-right: 10px;">search</i></span>
+          <span> <input style="width:80%" class="search-product" matInput placeholder="Search Products and Categories"
+              [(ngModel)]="searchTerm" (keyup.enter)="searchItems()" autocomplete="off"></span>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="filter-panel col-md-3">
+  <mat-accordion class="">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filters
+        </mat-panel-title>
+        <mat-panel-description>
+          Basic
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column">
+        <div fxFlex>
+          <mat-form-field class="filter-form">
+            <input matInput placeholder="Brand Name">
+          </mat-form-field>
+        </div>
+        <!-- <div fxFlex>
+          <mat-form-field>
+            <input matInput placeholder="Color">
+          </mat-form-field>
+        </div>
+        <div fxFlex>
+          <mat-form-field>
+            <input matInput placeholder="Material">
+          </mat-form-field>
+        </div> -->
+        <div fxFlex>
+          <mat-chip color="accent" selected>Apply</mat-chip>
+          <mat-chip color="accent" selected>Clear</mat-chip>
+        </div>
+      </div>
+
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filters
+        </mat-panel-title>
+        <mat-panel-description>
+          Advance
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div fxLayout="column">
+        <div fxFlex>
+          <mat-form-field class="filter-form">
+            <input matInput placeholder="Price Range Min">
+          </mat-form-field>
+        </div>
+        <!-- <div fxFlex>
+          <mat-form-field>
+            <input matInput placeholder="Ratings">
+          </mat-form-field>
+        </div> -->
+        <div fxFlex>
+          <mat-form-field class="filter-form">
+            <input matInput placeholder="Price Range Max">
+          </mat-form-field>
+        </div>
+        <div fxFlex>
+          <mat-chip color="accent" selected>Apply</mat-chip>
+          <mat-chip color="accent" selected>Clear</mat-chip>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="col-md-9 breadcrumb">
+  <div class="row">
+    <div class="col-md-12">
+      <div fxFlex class="product-card-header">
+        <mat-card>
+          <mat-card-title>Categories</mat-card-title>
+          <mat-card-subtitle>
+
+            <mat-chip-list>
+              <mat-chip color="accent" *ngFor="let cat of categoriesDataSource" selected>{{cat.name}}</mat-chip>
+            </mat-chip-list>
+          </mat-card-subtitle>
+        </mat-card>
+      </div>
     </div>
   </div>
-    <div class="filter-panel col-md-3">
-        <mat-accordion class="">
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Filters
-                </mat-panel-title>
-                <mat-panel-description>
-                  Basic
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div fxLayout="column">
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Brand Name">
-                      </mat-form-field>
-                  </div>
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Color">
-                      </mat-form-field>
-                  </div>
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Material">
-                      </mat-form-field>
-                  </div>
-              </div>
-              
-              
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Filters
-                </mat-panel-title>
-                <mat-panel-description>
-                  Advance
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div fxLayout="column">
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Price Range">
-                      </mat-form-field>
-                  </div>
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Ratings">
-                      </mat-form-field>
-                  </div>
-                  <div fxFlex>
-                      <mat-form-field>
-                        <input matInput placeholder="Price Range">
-                      </mat-form-field>
-                  </div>
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-    </div>
-    <div class="col-md-9 breadcrumb">
-        <div class="row">
-            <div class="col-md-12">
-            <div fxFlex class="product-card-header">
-              <mat-card>
-                  <mat-card-title>Categories</mat-card-title>
-                  <mat-card-subtitle>
-                    
-                      <mat-chip-list>
-                          <mat-chip color="accent" *ngFor="let cat of categoriesDataSource" selected>{{cat.name}}</mat-chip>
-                        </mat-chip-list>
-                  </mat-card-subtitle>
-              </mat-card>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="row">
+  <!-- <div class="row">
                 <div class="col-md-4" *ngFor="let item of productDataSource">
                     <mat-card class="product-card-header">
                         <mat-card-header>
@@ -111,27 +120,34 @@
             </div>
         </div> -->
 
-        <div class="row">
-          <div class="col-md-4" *ngFor="let item of productDataSource">
-              <mat-card class="product-card-header">
-                  <div class="box" (click)="quickview(item)">
-                      <img class="box-image" style="width:100%" [src]="item.image" alt="Photo">
-                         <div class="text">
-                          <p class="large-text">{{item.name}}</p>
-                          <p>{{item.description}}</p>
-                        </div>
-                  </div>
-                  <div>
-                    <button mat-button>Wishlist</button>
-                    <button mat-button>Cart</button>
-                    <button mat-button (click)="quickview(item)">Quick View</button>
-                  </div>
-                </mat-card>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="search-results" infinite-scroll [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()"
+        class="grid-container">
+        <div *ngFor="let item of productDataSource" class="grid-item">
+
+          <mat-card class="product-card-header">
+            <div class="box" (click)="quickview(item)">
+              <img class="box-image" style="width:100%" [src]="item.image" alt="Photo">
+              <div class="text">
+                <p class="large-text">{{item.name}}</p>
+                <p>{{item.description}}</p>
+              </div>
+            </div>
+            <div>
+              <button mat-button>Wishlist</button>
+              <button mat-button>Cart</button>
+              <button mat-button (click)="quickview(item)">Quick View</button>
+            </div>
+          </mat-card>
+        </div>
       </div>
+    </div>
   </div>
-      </div>
- 
-        <!-- <div fxFlex>   
+</div>
+
+<!-- <div fxFlex>   
           <div fxLayout="row">
               <div fxFlex>
                   <mat-paginator [length]="tableLength"

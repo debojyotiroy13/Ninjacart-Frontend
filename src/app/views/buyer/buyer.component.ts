@@ -8,19 +8,12 @@ import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 import {Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-export interface PeriodicElement {
-  id: number,
-  name: string;
-  description: String;
-  price: number;
-  category: string;
-}
-
 @Component({
   selector: 'product-root',
   templateUrl: './buyer.component.html',
   styleUrls: ['./buyer.component.css']
 })
+
 
 
 export class ListComponent {
@@ -29,6 +22,7 @@ export class ListComponent {
   itemsDataSource = [{color: 'lightblue'},{color: 'lightgreen'},{color: 'lightpink'},{color: '#DDBDF1'}];
   productDataSource: any[] = [];
   categoriesDataSource: any[] = [];
+  searchTerm: string= '';
 
   /* Product Variables */
   productName: string = '';
@@ -42,6 +36,8 @@ export class ListComponent {
   categoryDataSource: any = [];
   
   showSpinner: boolean = false;
+
+  
 
   // Grocery
   groceryImages : string[] = [
@@ -65,6 +61,12 @@ export class ListComponent {
     'https://images.unsplash.com/photo-1484788984921-03950022c9ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1704&q=80',
     'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',]
 
+  // Scrolling Parameters
+  throttle = 2000;
+  scrollDistance = 1;
+  pageSize = 12;
+  pageCounter = 1;
+
 
   /* Product Table Params */
   displayedColumns: string[] = [ 'category', 'name', 'description', 'price', 'action'];
@@ -75,16 +77,27 @@ export class ListComponent {
 
   constructor(private restService: RestService, private snackBar: MatSnackBar, 
     private router: Router,private authService: AuthService){
-    this.getProduct();
+    this.getProduct(this.pageCounter);
     this.getCategories();
   }
 
-  getProduct(){
+  onScrollDown(){
+    console.log("On Scroll!" + this.pageCounter);
+    this.pageCounter += 1;
+    this.getProduct(this.pageCounter);
+  }
+
+  searchItems(){
+    this.pageCounter = 1;
+    this.productDataSource = [];
+    this.getProduct(this.pageCounter);
+  }
+
+  getProduct(page){
+    console.log("GetProduct!" + this.pageCounter);
     this.showSpinner = true;
-    this.restService.get('product').subscribe((data : any) => {
-      this.productDataSource = data;
-      
-      this.productDataSource.forEach( (item, index) => {
+    this.restService.get('product?search=' + this.searchTerm + '&page=' + page + '&size=' + this.pageSize).subscribe((data : any) => {
+       data.forEach( (item, index) => {
         let catg : string = item.category;
         
         if(catg.toLowerCase()=="grocery"){
@@ -96,6 +109,8 @@ export class ListComponent {
         }else{
           item.image = this.groceryImages[0];
         }
+
+        this.productDataSource.push(item);
       })
       this.showSpinner = false;
       console.log(this.productDataSource);

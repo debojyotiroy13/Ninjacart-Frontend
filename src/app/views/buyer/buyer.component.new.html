@@ -1,0 +1,33 @@
+<div class="loading-indicator" *ngIf="showSpinner">
+  <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+</div>
+<div class="container breadcrumb">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div fxFlex class="search-card-box">
+        <mat-card>
+          <div fxLayout="column">
+            <div fxFlex>
+              <span><i class="material-icons" style="color: gray;margin-right: 10px;">add_a_photo</i></span>
+              <span class="search-product" style="width:80%">Gallery</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="search-results" infinite-scroll [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()"
+        class="grid-container">
+        <ngx-masonry [useImagesLoaded]="true" [options]="{ transitionDuration: '0.8s'}" (fitWidth)="true"
+          (resize)="true">
+          <div ngxMasonryItem class="masonry-item" *ngFor="let item of productDataSource; let i = index">
+            <img _ngcontent-c0="" [src]="item.image" style="width:100%"
+              (click)="lightbox.open(productDataSource, {index: i, counter: true, loop: true})">
+          </div>
+        </ngx-masonry>
+      </div>
+    </div>
+  </div>
+</div>

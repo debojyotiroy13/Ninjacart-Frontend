@@ -104,6 +104,22 @@
   }
 
   .header-image {
-    background-image: url('https://images.unsplash.com/photo-1516594798947-e65505dbb29d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+    /* background-image: url('https://images.unsplash.com/photo-1516594798947-e65505dbb29d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */
     background-size: cover;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  }
+
+  .filter-form {
+    width:100%;
+  }
+
+  .prod-detail-image{
+    width: 100%;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
   }

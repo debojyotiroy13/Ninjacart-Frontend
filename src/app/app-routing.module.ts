@@ -8,11 +8,13 @@ import { SignupComponent } from './views/login/signup.component'
 import { ProductDetailsComponent } from './views/buyer/product.details.component'
 import { AuthGuard } from './auth.guard';
 import { CartComponent } from './views/buyer/cart.component';
+import { NewListComponent } from './views/buyer/buyer.component.new';
 
 const routes: Routes = [
   { path: 'sell', component: ProductComponent , canActivate:[]},
   { path: 'cart', component: CartComponent , canActivate:[]},
   { path: 'home', component: ListComponent },
+  { path: 'newhome', component: NewListComponent },
   { path: 'admin', component: AdminComponent , canActivate:[]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },

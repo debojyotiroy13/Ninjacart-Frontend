@@ -1,29 +1,98 @@
 <div class="col-md-12">
-  <div fxFlex class="search-card-box">
-    <mat-card>
-        <div fxLayout="column">
-            <div fxFlex>
+  <div class="container breadcrumb">
+    <div class="row">
+      <div class="col-md-12">
+        <div fxFlex class="search-card-box">
+          <mat-card>
+            <div fxLayout="column">
+              <div fxFlex>
                 <span><i class="material-icons" style="color: gray;margin-right: 10px;">shopping_cart</i></span>
                 <span class="search-product">Shopping Cart</span>
-                <span class="search-product" style="float:right;"><button mat-raised-button color="primary">Proceed to buy</button></span>
+                <span class="search-product" style="float:right;"><button mat-raised-button color="primary">Proceed to
+                    buy</button></span>
+              </div>
             </div>
+          </mat-card>
         </div>
-    </mat-card>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let item of productDataSource">
+            <mat-card style="margin-bottom: 20px;">
+              <div style="    position: absolute;width: 95%;">
+                <button mat-button color="accent" style="float: right"><i class="material-icons">delete</i></button>
+                <button mat-button color="primary" style="float: right"><i class="material-icons">info</i></button>
+              </div>
+              <mat-card-header>
+                <div mat-card-avatar style="width:100px;height: 100px;" class="header-image"
+                  [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
+                <mat-card-subtitle>Rs. 1,000</mat-card-subtitle>
+              </mat-card-header>
+
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <mat-card style="margin-bottom: 20px;">
+          <mat-card-header>
+            <mat-card-title>Billing Amount</mat-card-title>
+            <mat-card-subtitle>20% Discount</mat-card-subtitle>
+            <mat-card-subtitle>Rs. 10,000</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </div>
+
 <div class="col-md-12">
   <div class="container breadcrumb">
     <div class="row">
-          <div class="col-md-12" *ngFor="let item of productDataSource">
-              <mat-card style="margin-bottom: 20px;">
-                  <mat-card-header>
-                    <div mat-card-avatar style="width:100px;height: 100px;" class="header-image"></div>
-                    <mat-card-title>{{item.name}}</mat-card-title>
-                    <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
-                    <mat-card-subtitle>Rs. 10,000</mat-card-subtitle>
-                  </mat-card-header>
-              </mat-card>
+      <div class="col-md-12">
+        <div fxFlex class="search-card-box">
+          <mat-card>
+            <div fxLayout="column">
+              <div fxFlex>
+                <span><i class="material-icons" style="color: gray;margin-right: 10px;">shopping_cart</i></span>
+                <span class="search-product">Wishlist</span>
+                <!-- <span class="search-product" style="float:right;"><button mat-raised-button color="primary">Proceed to
+                      buy</button></span> -->
+              </div>
+            </div>
+          </mat-card>
         </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let item of productDataSource">
+            <mat-card style="margin-bottom: 20px;">
+              <mat-card-header>
+                <div style="    position: absolute;width: 95%;">
+                  <button mat-button color="accent" style="float: right"><i class="material-icons">delete</i></button>
+                  <!-- <button mat-button color="primary" style="float: right"><i class="material-icons">save</i></button> -->
+                </div>
+                <div mat-card-avatar style="width:100px;height: 100px;" class="header-image"
+                  [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
+                <mat-card-subtitle>Rs. 1,000</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <!-- <mat-card style="margin-bottom: 20px;">
+            <mat-card-header>
+              <mat-card-title>Billing Amount</mat-card-title>
+              <mat-card-subtitle>20% Discount</mat-card-subtitle>
+              <mat-card-subtitle>Rs. 10,000</mat-card-subtitle>
+            </mat-card-header>
+          </mat-card> -->
+      </div>
     </div>
-</div>
+  </div>
 </div>

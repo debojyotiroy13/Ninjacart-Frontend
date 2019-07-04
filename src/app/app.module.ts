@@ -19,7 +19,11 @@ import { AuthService} from './services/auth.service';
 import { SellerService} from './services/seller.service';
 import { Routes, RouterModule } from '@angular/router';
 import { CartComponent } from './views/buyer/cart.component';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NewListComponent } from './views/buyer/buyer.component.new';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { CrystalGalleryModule} from 'ngx-crystal-gallery';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { CartComponent } from './views/buyer/cart.component';
     LoginComponent,
     SignupComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    NewListComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +44,13 @@ import { CartComponent } from './views/buyer/cart.component';
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule,
+    NgxMasonryModule,
+    CrystalGalleryModule
   ],
   providers: [RestService, AuthService, SellerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
